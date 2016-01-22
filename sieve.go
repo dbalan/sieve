@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package sieve
 
 // start from 2.
 func series() chan int {
@@ -49,7 +45,8 @@ func sieve(n int, in chan int) chan int {
 	return out
 }
 
-func primeSeries() chan int {
+// Returns a stream of primes numbers
+func PrimeSeries() chan int {
 	out := series()
 	p := make(chan int)
 	go func() {
@@ -60,11 +57,4 @@ func primeSeries() chan int {
 		}
 	}()
 	return p
-}
-
-func main() {
-	p := primeSeries()
-	for {
-		fmt.Println(<-p)
-	}
 }
