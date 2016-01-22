@@ -1,41 +1,17 @@
-# Sieve of Eratosthe In go.
+# Sieve of Eratosthenes In go.
 
 Experiments in go concurrency. :)
 
 http://www.mathbugsme.com/sieveoferatosthe.html
 
-## example output
+## Tests and Benchmark
 ```bash
-# generates an infinte stream
-go run sieve.go |head -n 20
-2
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
-27
-29
-31
-33
-35
-37
-39
-signal: broken pipe
-```
-
-## Benchmark
-```bash
-go test -bench=.
-testing: warning: no tests to run
+go test -bench=. -v
+=== RUN   TestPrimeSeries
+--- PASS: TestPrimeSeries (0.00s)
+=== RUN   TestPrimeSeriesTwo
+--- PASS: TestPrimeSeriesTwo (0.00s)
 PASS
-BenchmarkPrime-4	      10	 224442312 ns/op
-ok  	_/Users/dhananjay/Code/sieve	2.409s
+186209088 ns/op
+2.042s_/Users/dhananjay/Code/sieve ok  10 BenchmarkPrimeSeries-4
 ```

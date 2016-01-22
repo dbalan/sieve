@@ -13,18 +13,6 @@ func series() chan int {
 	return out
 }
 
-func multiples(n int) chan int {
-	out := make(chan int)
-	go func() {
-		s := series()
-		for {
-			i := <-s
-			out <- i * n
-		}
-	}()
-	return out
-}
-
 func sieve(n int, in chan int) chan int {
 	out := make(chan int)
 	go func() {
