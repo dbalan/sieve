@@ -27,18 +27,11 @@ func multiples(n int) chan int {
 
 func sieve(n int, in chan int) chan int {
 	out := make(chan int)
-	s := multiples(n)
-
 	go func() {
 		for {
-			next := <-s
-			for {
-				current := <-in
-				if next != current {
-					out <- current
-				} else {
-					break
-				}
+			current := <-in
+			if current%n != 0 {
+				out <- current
 			}
 		}
 	}()
