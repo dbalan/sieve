@@ -1,7 +1,7 @@
 package sieve
 
 // start from 2.
-func series() chan int {
+func series() <-chan int {
 	out := make(chan int)
 	go func() {
 		i := 1
@@ -13,7 +13,7 @@ func series() chan int {
 	return out
 }
 
-func sieve(n int, in chan int) chan int {
+func sieve(n int, in <-chan int) <-chan int {
 	out := make(chan int)
 	go func() {
 		for {
@@ -27,7 +27,7 @@ func sieve(n int, in chan int) chan int {
 }
 
 // Returns a stream of primes numbers
-func PrimeSeries() chan int {
+func PrimeSeries() <-chan int {
 	out := series()
 	p := make(chan int)
 	go func() {
